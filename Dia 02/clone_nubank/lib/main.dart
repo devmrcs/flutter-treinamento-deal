@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Clone NuBank',
       theme: ThemeData(
-        primaryColor: const Color(0xFF830AD1),
+        primaryColor: Colors.green,
         fontFamily: 'Graphik',
       ),
       home: const HomePage(),
