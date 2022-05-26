@@ -10,6 +10,9 @@ environment:
 dependencies: 
   home_provider:
     path: packages/home_provider
+
+  home_bloc:
+    path: packages/home_bloc
     
   flutter:
     sdk: flutter

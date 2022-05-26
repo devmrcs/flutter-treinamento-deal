@@ -1,22 +1,21 @@
-import 'dart:convert';
-
+import 'package:cep_infra/src/datasources/cep_hive_datasource.dart';
+import 'package:cep_infra/src/datasources/cep_http_datasource.dart';
 import 'package:cep_models/cep_models.dart';
-import 'package:http/http.dart' as http;
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class CepService {
-  Future<CepModel> getCep(String cep) async {
-    await Future.delayed(const Duration(seconds: 2));
-    final Uri uri = Uri.parse('https://viacep.com.br/ws/$cep/json/');
-    final response = await http.get(uri);
+  final CepHttpDataSource _httpDataSource = CepHttpDataSource();
+  final CepHiveDataSource _hiveDataSource = CepHiveDataSource();
 
-    if (response.statusCode == 200) {
-      final CepModel cepModel = CepModel.fromJson(
-        json.decode(response.body),
-      );
+  Future<CepModel> getCep(String cep) async {
+    final bool isConnected = await Connectivity().checkConnectivity() != ConnectivityResult.none;
+    if (isConnected) {
+      final CepModel cepModel = await _httpDataSource.getCep(cep);
+      await _hiveDataSource.saveCep(cep, cepModel);
 
       return cepModel;
     } else {
-      throw Exception('Falha ao buscar CEP');
+      return await _hiveDataSource.getCep(cep);
     }
   }
 }

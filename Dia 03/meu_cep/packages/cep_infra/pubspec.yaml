@@ -10,6 +10,9 @@ environment:
 
 dependencies:
   http: ^0.13.4
+  hive: ^2.2.1
+  connectivity_plus: ^2.3.0
+  
   cep_models:
     path: ../cep_models
   flutter:
