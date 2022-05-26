@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_provider/home_provider.dart';
+import 'package:home_bloc/home_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.green,
       ),
-      home: const HomeProvider(),
+      home: const HomeBloc(),
     );
   }
 }
