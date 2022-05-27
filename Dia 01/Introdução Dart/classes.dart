@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, unused_element
+
 void main() {
   // Gato gato = Gato('Miau');
   // Gato gato = Gato.nomeado('Miau2');
