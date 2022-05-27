@@ -18,7 +18,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('Build...');
+    debugPrint('Build...');
 
     return Scaffold(
       appBar: AppBar(
